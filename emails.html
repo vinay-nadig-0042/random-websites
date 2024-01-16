@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Random Emails</title>
+	<style type="text/css">
+		body {
+			background-color: #EEEEEE;
+			font-family: "Gill Sans", sans-serif;
+		}
+		#container {
+			margin: 80px;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<button onclick="copyText(this,'subject')">Copy Subject</button>
+		<button onclick="copyText(this,'body')">Copy Body</button>
+		<h2 id="subject"></h2>
+		<p id="body"></p>
+	</div>
+	<script type="text/javascript">
+		function copyText(btn, id) {
+			var copyEle = document.getElementById(id);
+
+		   // Copy the text inside the text field
+		  navigator.clipboard.writeText(copyEle.innerText);
+		  btn.innerText = "Copied!"
+
+		  setTimeout(() => {
+		  	id === "body" ? btn.innerText = "Copy Body" : btn.innerText = "Copy Subject"
+		  }, 2000)
+		}
+
+		var emails = [
+		  {
+		    "subject": "Checking in",
+		    "body": "Hi, I hope you are doing well. I wanted to see if you might have some time next week to catch up over the phone or video chat. Please let me know what days and times could work for you. Looking forward to connecting soon!" 
+		  },
+		  {
+		    "subject": "Long time no see!", 
+		    "body": "Hey, it's been too long since we last spoke. I would love to schedule some time to catch up next week over a phone call or video chat if you are available. Please let me know what date and time works best on your end. Hope you are doing well!"
+		  },
+		  {
+		    "subject": "Catching up",
+		    "body": "Hi! I realized it's been a while since we last caught up. Do you have availability next week for a quick phone or video chat? Let me know what days and times work for you and I'll get something on the calendar. Look forward to connecting!"
+		  },
+		  {
+		    "subject": "Quick catch up",
+		    "body": "Hey, I hope this email finds you well! I wanted to see if you might have 30 minutes next week for a quick phone or video chat to catch up. Please let me know what days and times could work for you and I'll get it scheduled. Look forward to talking soon!"
+		  },
+		  {
+		    "subject": "Hope you are well!",
+		    "body": "Hi! Just wanted to check in and say hello. I would love to schedule some time to catch up over the phone or video next week if you have availability. Please let me know what days and times work best for you and I'll get something booked. Look forward to connecting!" 
+		  },
+		  {
+		    "subject": "Catch up next week?",
+		    "body": "Hey, I hope this email finds you doing well! I realized recently that it's been too long since we last connected. Do you have time next week for a quick phone or video chat to catch up? Please let me know what days and times could work for you! My schedule is flexible so I can make whatever time is convenient for you."
+		  },
+		  {
+		    "subject": "Long Overdue Catch Up", 
+		    "body": "Hi! I can't believe how long it's been since we last spoke. I would love to schedule some time next week to catch up over the phone or video chat. Please let me know what days and times could work for you and I'll get something booked. My schedule is wide open so I can be flexible with whatever is most convenient on your end."
+		  },
+		  {
+		    "subject": "Hope all is well!",
+		    "body": "Hey, I hope you are doing great! It occurred to me recently that it has been too long since we last connected. Do you have availability next week for a quick phone or video chat to catch up? Please let me know some days and times that could work for you. Look forward to talking soon!"
+		  },
+		  {
+		    "subject": "Catch Up Next Week",
+		    "body": "Hi! I hope this email finds you doing well. I wanted to see if you might have time next week for a quick phone or video chat to catch up. Please let me know what days and times could work best for you. My schedule is flexible so I can make whatever is most convenient on your end work." 
+		  },
+		  {
+		    "subject": "Hope You're Well! Let's Catch Up.",
+		    "body": "Hey, I hope you're doing great! It's been too long since we last spoke. If you have 30-60 minutes next week, I would love to schedule a phone or video chat to catch up. Please let me know what days/times could work for you and I'll get it on the calendar. Look forward to connecting!"
+		  }
+		]
+		var index = Math.abs(Math.ceil(emails.length * Math.random() % emails.length) - 1)
+		var sub = document.getElementById("subject")
+		console.log(emails)
+		sub.innerText = emails[index]["subject"]
+
+		index = Math.abs(Math.ceil(emails.length * Math.random() % emails.length) - 1)
+		var body = document.getElementById("body")
+		body.innerText = emails[index]["body"]
+	</script>
+</body>
+</html>
